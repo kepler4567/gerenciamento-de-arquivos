@@ -24,7 +24,7 @@ int leia_registro(char str[], int Tamanho, FILE *entrada)
 
     while (str[i] != EOF && contador != 4)
     {
-      
+                
             str[i] = caracteres;
             i++;
             
@@ -32,7 +32,13 @@ int leia_registro(char str[], int Tamanho, FILE *entrada)
             caracteres = fgetc(entrada);
             if (caracteres == '|'){ contador++; }
     }
-    str[i] = '\0';
+    while (i != 64)
+    {
+        str[i] = '\0';
+        i++;
+    }
+    
+    
     return i;
 }
 
@@ -59,7 +65,9 @@ if ((SAIDA = fopen("Dados.dat","wb")) == NULL) {
 
 while (registro[i] != EOF)
 {
+
    verificador = leia_registro(registro, 64, entrada );
+   
 
     escreve_registro(registro,SAIDA); 
     i++;  
