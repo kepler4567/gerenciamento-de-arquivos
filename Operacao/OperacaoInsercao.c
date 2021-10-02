@@ -3,9 +3,20 @@
 #include <string.h>
 
 
-int OperacaoInsercao(char *ArquivoImportacao, char *registro){
+int OperacaoInsercao( char *registro)
+{
+    FILE *saida;
+    short reg;
 
+    if ((saida = fopen("Dados.dat", "a+b")) == NULL)
+    {
+        fprintf(stderr, "Erro ao abrir o arquivo");
+        return EXIT_FAILURE;
+    }
 
-return EXIT_SUCCESS;
+    fwrite(registro, 64, 1, saida);
+
+    fclose(saida);
+
+    return EXIT_SUCCESS;
 }
-

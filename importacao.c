@@ -3,17 +3,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-bool escreve_registro(char *registro,FILE *saida){
-
-if (fputs(registro, saida))
-{
-    return true;
-}
-
-    
-
-return false;
-}
 
 int leia_registro(char str[], int Tamanho, FILE *entrada)
 {
@@ -22,7 +11,7 @@ int leia_registro(char str[], int Tamanho, FILE *entrada)
     int contador = 0;
     caracteres = fgetc(entrada);
 
-    while (str[i] != EOF && contador != 4)
+    while ( contador != 4)
     {
                 
             str[i] = caracteres;
@@ -30,13 +19,12 @@ int leia_registro(char str[], int Tamanho, FILE *entrada)
             
 
             caracteres = fgetc(entrada);
+
             if (caracteres == '|'){ contador++; }
     }
-    while (i != 64)
-    {
-        str[i] = '\0';
-        i++;
-    }
+        str[i] = 'K';
+        str[i++] = '\0';
+   
     
     
     return i;
@@ -68,16 +56,15 @@ while (registro[i] != EOF)
 
    verificador = leia_registro(registro, 64, entrada );
    
+   fwrite(&registro, 64, 1, SAIDA);
 
-    escreve_registro(registro,SAIDA); 
+   
+   
     i++;  
 }
+printf("arquivo gerado com sucesso");
 
-if (verificador) {printf("Arquivo gerado com sucesso");}
-else
-{
-    printf("Erro ao gerar arquivo");
-}
+
 
 
 
