@@ -22,8 +22,8 @@ int leia_registro(char str[], int Tamanho, FILE *entrada)
 
             if (caracteres == '|'){ contador++; }
     }
-        str[i] = 'K';
-        str[i++] = '\0';
+        str[i] = '\0';
+        
    
     
     
