@@ -22,7 +22,13 @@ int leia_registro(char str[], int Tamanho, FILE *entrada)
 
             if (caracteres == '|'){ contador++; }
     }
+    while (i<=64)
+    {
         str[i] = '\0';
+        i++;
+    }
+    
+        
         
    
     
