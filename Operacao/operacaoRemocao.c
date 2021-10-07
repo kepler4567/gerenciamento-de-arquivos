@@ -3,43 +3,50 @@
 #include <string.h>
 
 
-int leia_chave(char str[], int Tamanho, FILE *entrada)
-{
-    int i = 0;
-    char caracteres;
-    caracteres = fgetc(entrada);
+// int leia_chave(char str[], int Tamanho, FILE *entrada)
+// {
+//     int i = 0;
+//     char caracteres;
+//     caracteres = fgetc(entrada);
 
-    while ( i <=6)
-    {   
-            str[i] = caracteres;
-            caracteres = fgetc(entrada);
-            i++;
-    }
-        str[i] = '\0';
+//     while ( i <=6)
+//     {   
+//             str[i] = caracteres;
+//             caracteres = fgetc(entrada);
+//             i++;
+//     }
+//         str[i] = '\0';
         
    
     
     
-    return i;
-}
+//     return i;
+// }
 
 int OperacaoRemocao(char *chave){
 
-int ped = -1;
+int i = 0;
+char registro[64];
 FILE *entrada;
-char chaveArquivo;
+char chaveArquivo[5];
 
 if ((entrada = fopen("Dados.dat", "a+b")) == NULL)
 {
     fprintf(stderr, "Erro ao abrir o arquivo");
     return EXIT_FAILURE;
 }
-while (entrada)
+while (registro[i] != EOF)
 {
-    //leia_chave(chaveArquivo, 6, entrada ); // recebe a chave do registro no arquivo na chaveArquivo
-
     
+    fread(chaveArquivo, sizeof(char) ,6,entrada);
+    
+    i += 58;
 
+    if (chaveArquivo == chave)
+    {
+        printf("%s", chaveArquivo);
+    }
+    
 }
 
 
