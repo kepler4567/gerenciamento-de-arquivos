@@ -19,6 +19,7 @@ while (c != '\n')
     c = getchar();
     
 }
+
 str[i] = '\0';
 return i;
 
@@ -29,18 +30,18 @@ return i;
 
 int executa_operacoes(){
     char parametro;
-    char ChaveRegistro[120];
+    char ChaveRegistro[64];
     int validador;
 
     do
     {
         printf("Digite a chave ou o registro da operacao, ex: 986243> ");
-        input(ChaveRegistro, 120);
+        input(ChaveRegistro, 64);
 
         printf("Digite o formato de operacao que deseja, ex: b: ");
         parametro = getchar();
 
-        
+        printf("%s", ChaveRegistro);
         
         
         
@@ -56,8 +57,8 @@ int executa_operacoes(){
         }
         else if (parametro == 'r')
         {
-            printf("Operacao de remocao ativada na chave: %i\n", ChaveRegistro);
-            //OperacaoRemocao(, ChaveRegistro);
+            printf("Operacao de remocao ativada na chave: %s\n", ChaveRegistro);
+            OperacaoRemocao(ChaveRegistro);
         }
         else 
         {
@@ -68,6 +69,7 @@ int executa_operacoes(){
             exit(EXIT_FAILURE);
         }
 
+        ChaveRegistro[0] = "";
         printf("Digite 1 para continuar e 2 para sair: ");
         scanf("%i", &validador);
 
