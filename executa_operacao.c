@@ -15,12 +15,20 @@ while (c != '\n')
     {
         str[i] = c;
         i++;
+        printf("chegou");
     }
     c = getchar();
     
 }
 
-str[i] = '\0';
+while (i<=64)
+{
+    str[i] = '\0';
+    i++;
+}
+
+
+
 return i;
 
 
@@ -31,19 +39,15 @@ return i;
 int executa_operacoes(){
     char parametro;
     char ChaveRegistro[64];
-    int validador;
+    int validador = 1;
 
     do
     {
-        printf("Digite a chave ou o registro da operacao, ex: 986243> ");
+        printf("Digite o formato de operacao que deseja, ex: b: ");
+        scanf(" %c ", &parametro);
         input(ChaveRegistro, 64);
 
-        printf("Digite o formato de operacao que deseja, ex: b: ");
-        parametro = getchar();
-
-        printf("%s", ChaveRegistro);
-        
-        
+                
         
         if (parametro == 'b')
         {
@@ -69,7 +73,6 @@ int executa_operacoes(){
             exit(EXIT_FAILURE);
         }
 
-        ChaveRegistro[0] = "";
         printf("Digite 1 para continuar e 2 para sair: ");
         scanf("%i", &validador);
 
