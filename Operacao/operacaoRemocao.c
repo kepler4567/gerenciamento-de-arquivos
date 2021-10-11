@@ -3,32 +3,13 @@
 #include <string.h>
 
 
-// int leia_chave(char str[], int Tamanho, FILE *entrada)
-// {
-//     int i = 0;
-//     char caracteres;
-//     caracteres = fgetc(entrada);
-
-//     while ( i <=6)
-//     {   
-//             str[i] = caracteres;
-//             caracteres = fgetc(entrada);
-//             i++;
-//     }
-//         str[i] = '\0';
-        
-   
-    
-    
-//     return i;
-// }
-
 int OperacaoRemocao(char *chave){
 
 int i = 0;
 char registro[64];
 FILE *entrada;
 char chaveArquivo[5];
+int contador = 0;
 
 if ((entrada = fopen("Dados.dat", "a+b")) == NULL)
 {
@@ -38,21 +19,24 @@ if ((entrada = fopen("Dados.dat", "a+b")) == NULL)
 while (registro[i] != EOF)
 {
     
-    fread(chaveArquivo, sizeof(char) ,6,entrada);
+    fread(registro, sizeof(char) ,1,entrada);
+     
     
-    i += 58;
-
-    if (chaveArquivo == chave)
+    for (int t = 0; t < 6; t++)
     {
-        printf("%s", chaveArquivo);
+         
+         chaveArquivo[t] = registro[t];
+         
     }
-    
+    i++;
+    printf("%s", chaveArquivo);
 }
 
 
 
 
-    
+fclose(entrada);
+
 
 return EXIT_SUCCESS;
 }
